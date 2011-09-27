@@ -46,9 +46,19 @@ label {
 	letter-spacing:5px;
 	margin-bottom: 0;
 }
+#main
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url('http://west-us.cdn.static.labs.momentum.io/img/survivesac-bg-v1.png') no-repeat center center;
+}
 #wrapper {
-	width: 302px;
-	margin: 50px auto;
+	width: 300px;
+	margin: 15.5em auto;
+	opacity: 0.8;
 	padding: 0 15px;
 	background-color: #121212;
 	border: 1px #828282 solid;

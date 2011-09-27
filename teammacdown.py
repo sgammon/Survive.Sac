@@ -38,10 +38,10 @@ class MainPage(webapp.RequestHandler):
 <html>
 	<head>
 		<title>Register to play Survive Sac 2011</title>
-		<link rel="stylesheet" type="text/css" href="http://west-us.cdn.static.labs.momentum.io/style/survive-sac-v1.css" />
+		<link rel="stylesheet" type="text/css" href="http://west-us.cdn.static.labs.momentum.io/style/survive-sac-v2.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 	</head>
-	<body>""")
+	<body><div id='main'>""")
 	
 		fail = self.request.get('fail', False)
 		success = self.request.get('success', False)
@@ -88,7 +88,7 @@ class MainPage(webapp.RequestHandler):
 				<div><textarea name="refer" id="refer" rows="6" placeholder="how did you hear about Survive Sac?">how did you hear about Survive Sac?</textarea></div>
 				<div><input type="submit" id="submit" value="create player"/></div>
 			</form>
-		</div>
+		</div></div>
 	<script type="text/javascript">
 		$('input').click(function clearIfDefault(){
 			$(this).val('');
@@ -113,15 +113,15 @@ class Team(webapp.RequestHandler):
 		player.refer = self.request.get('refer')
 		
 		previous_game = self.request.get('previous_game', False)
-
-		if previous_game in set(['1', 'on', 'yes', 'checked', True, 1]):
+		
+		if previous_game in ['1', 'on', 'yes', 'checked', True, 1]:
 			player.previous_game = True
 		else:
 			player.previous_game = False
 		
 		smartphone = self.request.get('smartphone', False)
 
-		if smartphone in set(['1', 'on', 'yes', 'checked', True, 1]):
+		if smartphone in ['1', 'on', 'yes', 'checked', True, 1]:
 			player.smartphone = True
 		else:
 			player.smartphone = False

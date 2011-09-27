@@ -1,12 +1,14 @@
 application: teammacdown
-version: 2-3-beta
-runtime: python27
+version: 2-4
+runtime: python
 api_version: 1
-threadsafe: yes
 
 handlers:
 - url: /style
   static_dir: style
   
+- url: /img
+  static_dir: img
+  
 - url: /.*
-  script: teammacdown.TMD
+  script: teammacdown.py
