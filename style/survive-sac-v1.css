@@ -1,0 +1,78 @@
+body {
+	background-color: #000;
+	font-family: Verdana;
+	color: #828282;
+	font-size: 75%;
+}
+h1 {
+	color: #f00;
+	font-size: 150%; 
+	font-weight: bold; 
+	letter-spacing: 5px;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 15px auto;
+	width: 300px;
+	background-color: #000;
+	align: center;
+}
+form {text-align: left;}
+input, textarea {
+	font-family: Verdana;
+	color: #828282;
+	border: #828282 solid 1px;
+	background-color: #242424;
+	width: 300px;
+	margin-bottom: 5px;
+}
+input:active, input:focus, textarea:active, textarea:focus {
+	font: Verdana;
+	color: ;#cacaca;
+	border: #e1e1e1 solid 1px;
+	background-color: #616161;
+}
+label {
+	font-size: 1em;
+	display: inline;
+}
+.check {
+	width: 25px;
+}
+#submit {
+	color: #f00;
+	border: 1px solid red;
+	text-transform: uppercase;
+	background-color: #000;
+	letter-spacing:5px;
+	margin-bottom: 0;
+}
+#wrapper {
+	width: 302px;
+	margin: 50px auto;
+	padding: 0 15px;
+	background-color: #121212;
+	border: 1px #828282 solid;
+}
+#alert
+{
+	margin-top: 50px;
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding: 2px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+.success
+{
+	background: green;
+	color: white;
+}
+.fail
+{
+	background: red;
+	color: black;
+}
