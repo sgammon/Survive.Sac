@@ -27,6 +27,7 @@ input, textarea {
 	width: 300px;
 	margin-bottom: 5px;
 }
+p {font-size: inherit;}
 input:active, input:focus, textarea:active, textarea:focus {
 	font: Verdana;
 	color: ;#cacaca;

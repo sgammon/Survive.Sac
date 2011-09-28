@@ -1,0 +1,27 @@
+{% extends "__base.html" %}
+
+{% block title %}Register to play Survive Sac 2011{% endblock %}
+
+{% block heading %}REGISTER{% endblock %}
+
+{% block content %}
+<form action="/create?%s" method="post">
+	<div><input type="text" name="full_name" placeholder="name" value='name'/></div>
+	<div><input type="text" name="email" placeholder="email" value='email' /></div>
+	<div><input type="text" name="age" placeholder="age" value='age' /></div>
+	<div><textarea name="refer" id="refer" rows="6" placeholder="how did you hear about Survive Sac?">how did you hear about Survive Sac?</textarea></div>
+	<div><input type="text" name="previous_game" placeholder="did you play last year?" value='did you play last year?' /></div>
+	<div><input type="text" name="smartphone" placeholder="do you have a smartphone?" value='do you have a smartphone?' /></div>
+	<div><input type="text" name="paypal" placeholder="paypal confirmation number"  value='paypal confirmation number'/></div>
+	<div><input type="submit" id="submit" value="create player"/></div>
+</form>
+
+<script type="text/javascript">
+	$('input').click(function clearIfDefault(){
+		$(this).val('');
+	});
+	$('textarea').click(function clearIfDefault(){
+		$(this).val('');
+	});
+</script>
+{% endblock %}
