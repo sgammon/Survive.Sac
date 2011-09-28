@@ -1,5 +1,5 @@
 application: teammacdown
-version: 2-5
+version: beta
 runtime: python
 api_version: 1
 
@@ -9,6 +9,9 @@ handlers:
   
 - url: /img
   static_dir: img
+  
+- url: /static
+  static_dir: static
   
 - url: /.*
   script: teammacdown.py

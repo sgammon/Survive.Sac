@@ -104,16 +104,10 @@ class Team(TMDHandler):
 		
 		smartphone = self.request.get('smartphone', False)
 
-		if smartphone in ['1', 'on', 'yes', 'checked', 'True', True, 1]:
+		if smartphone not in [False, None, 0, '0']:
 			player.smartphone = True
 		else:
 			player.smartphone = False
-
-		paypal = self.request.get('paypal', False)
-		if paypal != 'paypal confirmation number' and paypal not in [False, None, 0]:
-			player.paypal = self.request.get('paypal')
-		else:
-			self.redirect('/?' + urllib.urlencode({'fail': 'true', 'reason': 'paypal_invalid'}))
 
 		logging.info('Subscribing player: '+str(player.full_name))
 		k = player.put()
@@ -131,11 +125,25 @@ class Callback(TMDHandler):
 		full_name = self.request.get('full_name')
 		self.render('confirmation.html', fullname=full_name)
 		
+		
+class FBPageTab(TMDHandler):
+	
+	def get(self):
+		return None
+		
+		
+class FBApp(TMDHandler):
+	
+	def get(self):
+		return None
+		
 
 TMD = webapp.WSGIApplication([
 	('/', MainPage),
 	('/create', Team),
-	('/success', Callback)
+	('/success', Callback),
+	('/_fb/pagetab', MainPage),
+	('/_fb/app.*', MainPage)
 	], debug=True, config=config.config)
 	
 	

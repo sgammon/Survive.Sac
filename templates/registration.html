@@ -2,26 +2,234 @@
 
 {% block title %}Register to play Survive Sac 2011{% endblock %}
 
-{% block heading %}REGISTER{% endblock %}
+{% block heading %}REGISTRATION{% endblock %}
 
 {% block content %}
-<form action="/create?%s" method="post">
-	<div><input type="text" name="full_name" placeholder="name" value='name'/></div>
-	<div><input type="text" name="email" placeholder="email" value='email' /></div>
-	<div><input type="text" name="age" placeholder="age" value='age' /></div>
-	<div><textarea name="refer" id="refer" rows="6" placeholder="how did you hear about Survive Sac?">how did you hear about Survive Sac?</textarea></div>
-	<div><input type="text" name="previous_game" placeholder="did you play last year?" value='did you play last year?' /></div>
-	<div><input type="text" name="smartphone" placeholder="do you have a smartphone?" value='do you have a smartphone?' /></div>
-	<div><input type="text" name="paypal" placeholder="paypal confirmation number"  value='paypal confirmation number'/></div>
-	<div><input type="submit" id="submit" value="create player"/></div>
-</form>
+
+<style>
+  .override #googlecart-widget-head {
+    background: #222; color: white;
+  }
+  .override #googlecart-arrow,
+  .override #googlecart-title,
+  .override #googlecart-summary
+  {
+    color: white;
+  }
+  .override #googlecart-widget-body,
+  .override #googlecart-widget-list,
+  .override .googlecart-widget-item,
+  .override .googlecart-widget-quantity-column,
+  .override .googlecart-widget-quantity-box,
+  .override .googlecart-widget-details-column,
+  .override .googlecart-widget-title,
+  .override .googlecart-widget-short-details,
+  .override .googlecart-widget-removed-message,
+  .override .googlecart-widget-image-column,
+  .override .googlecart-widget-img,
+  .override .googlecart-widget-price-column,
+  .override .googlecart-widget-price,
+  .override .googlecart-widget-remove,
+  .override .googlecart-widget-restore,
+  .override #googlecart-widget-emptymessage,
+  .override .googlecart-widget-footertext,
+  .override .googlecart-widget-totalmessage,
+  .override .googlecart-widget-totalprice,
+  .override .googlecart-widget-disclaimer
+  {
+    background: black; opacity: 0.8; color: white;
+  }
+  .override .googlecart-widget-checkout {
+    background: black;
+  }
+</style>
+
+<div class='formsection'>
+	
+	<h2><span class='bignumber'>1</span>. tell us about yourself</h2>	
+	
+	<div id='facebook' class='center'>
+		<div id='facebookUser' class='hidden'>
+			<div id='facebookAuthSuccess'>
+				<b>Logged in via Facebook as</b>
+			</div>
+		
+			<div id='profileWidget'>
+				<div id='profilePic' class='floatleft'>
+					<fb:profile-pic uid='loggedinuser' width='40' height='40' linked='false' facebook-logo='false' />
+				</div>
+				<div id='namebadge' class='floatleft'>
+					<span id='fb_fullname'></span>
+					<br />
+					<div class="fb-like" data-href="http://tmd.labs.momentum.io" data-send="true" data-layout="button_count" data-width="150" data-show-faces="false" data-colorscheme="dark" data-font="lucida grande"></div>
+				</div>
+				<div id='utilLinks' class='floatright'>
+					<a href="javascript:deauthorize();">I'm not this person!<br />
+					Deauthorize</a>
+				</div>
+				<div class='clearboth'></div>
+			</div>
+		</div>
+		<div id='facebookLogin'>
+			<br />
+			<fb:login-button perms="email,publish_checkins,publish_stream,publish_actions,sms,rsvp_event">Login with Facebook</fb:login-button>
+			<br />
+			<br />
+			-- or --
+		</div>
+	</div>
+
+	<br />
+
+	<form action="/create?%s" method="post">
+		<div><input id='name' type="text" name="full_name" placeholder="name" value='name'/></div>
+		<div><input id='email' type="text" name="email" placeholder="email" value='email' /></div>
+		<div><input id='age' type="text" name="age" placeholder="age" value='age' /></div>
+		<div><textarea name="refer" id="refer" rows="6" placeholder="how did you hear about Survive Sac?">how did you hear about Survive Sac?</textarea></div>
+		<br />
+		<div>
+			did you attend the last survive sac?<br />
+			<span>
+				<select name='lastgame'>
+					<option value='no'>No</option>
+					<option value='yes'>Yes</option>
+				</select>
+			</span>
+		</div>
+		<br />
+		<div>
+			do you own a smartphone?<br />
+			<select name='smartphone'>
+				<option value='no'>No</option>
+				<option value='iphone'>Yes - Apple</option>
+				<option value='android'>Yes - Android</option>
+				<option value='blackberry'>Yes - BlackBerry</option>
+				<option value='windows'>Yes - Windows</option>
+				<option value='other'>Yes - Other</option>
+			</select>
+		</div>		
+
+		<br />
+	
+		<!-- Hidden Properties -->
+		<input id='fb_profile_gender' type='hidden' value='__NULL__' />
+		<input id='fb_profile_username' type='hidden' value='__NULL__' />
+		<input id='fb_profile_id' type='hidden' value='__NULL__' />
+	</form>
+</div>
+
+<div class='formsection'>
+	<h2><span class='bignumber'>2</span>. reserve your spot</h2>
+	
+	<ul class='cartOptions'>
+		<li>
+
+			<span class='productTitle'>Player Ticket (minimum of 1)</span>
+			
+			<div class="product">
+				<input type="hidden" class="product-title" value="Single Ticket">
+				<input type="hidden" class="product-price" value="5.00">
+				<div class="googlecart-add-button" tabindex="0" role="button" title="Purchase ticket ($5)"></div>
+			</div>
+		</li>
+		<li>
+			
+			<span class='productTitle'>Rations Package</span>
+						
+			<div class="product">
+				<input type="hidden" class="product-title" value="Rations Package">
+				<input type="hidden" class="product-price" value="5.00">
+				<div class="googlecart-add-button" tabindex="0" role="button" title="Rations Package ($5)"></div>
+			</div>
+		</li>
+		<li>
+			
+			<span class='productTitle'>Preorder a Map</span>
+						
+			<div class="product">
+				<input type="hidden" class="product-title" value="Preorder Map">
+				<input type="hidden" class="product-price" value="3.00">
+				<div class="googlecart-add-button" tabindex="0" role="button" title="Preorder Map ($3)"></div>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<div id="googlecart-widget"></div>
 
 <script type="text/javascript">
-	$('input').click(function clearIfDefault(){
-		$(this).val('');
-	});
-	$('textarea').click(function clearIfDefault(){
-		$(this).val('');
-	});
+
+	function fillFacebookResponse(response)
+	{
+		$('#facebookLogin').addClass('hidden');
+		
+		$('#fb_fullname').html(response.name);
+		$('#facebookUser').removeClass('hidden');
+		
+		$('#name').val(response.name);
+		$('#email').val(response.email);
+
+		
+		$('#fb_profile_username').val(response.username);
+		$('#fb_profile_id').val(response.id);
+		$('#fb_profile_gender').val(response.gender);
+	}
+
+	$(document).ready(function prepareFacebook(){
+
+		FB.init({ 
+		   appId:'242878385764668', cookie:true, 
+		   status:true, xfbml:true 
+		});
+
+
+		FB.Event.subscribe('auth.login', function(response) {
+		        if (response.session) {
+					FB.api('/me', function(response) {
+						fillFacebookResponse(response);
+					});			
+		        }
+	    });
+		
+		$('input').click(function clearIfDefault(){
+			$(this).val('');
+		});
+		$('textarea').click(function clearIfDefault(){
+			$(this).val('');
+		});
+	
+	});	
+	
+	function shareEvent()
+	{
+		FB.ui(
+		  {
+		    method: 'send',
+			name: 'Survive.Sacramento - Real life zombie survival!',
+			link: 'http://tmd.labs.momentum.io'
+		  },
+		  function(response) {
+		    if (response && response.post_id) {
+		      alert('Post was published.');
+		    } else {
+		      alert('Post was not published.');
+		    }
+		  }
+		);
+	}
+	
+	function deauthorize()
+	{
+		FB.logout();
+		$('#facebookUser').addClass('hidden');
+		$('#facebookLogin').removeClass('hidden');
+	}
+	
 </script>
+<script  id='googlecart-script' type='text/javascript' src='https://checkout.google.com/seller/gsc/v2_2/cart.js?mid=819057174593550'
+	post-cart-to-sandbox='true'
+	currency='USD'
+	productWeightUnits='LB'
+	hide-cart-when-empty="true"
+	aid="UA-25133943-3"></script>
 {% endblock %}

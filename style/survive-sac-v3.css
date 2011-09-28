@@ -5,6 +5,8 @@ body {
 	font-size: 75%;
 }
 
+a:visited {color: blue}
+
 h1 {
 	color: #f00;
 	font-size: 150%; 
@@ -34,6 +36,10 @@ input:active, input:focus, textarea:active, textarea:focus {
 	border: #e1e1e1 solid 1px;
 	background-color: #616161;
 }
+.smalltext
+{
+	font-size:11px;
+}
 input.small {
 	width: 140px;
 	display: inline;
@@ -52,6 +58,7 @@ label {
 	letter-spacing:5px;
 	margin-bottom: 0;
 }
+
 #main
 {
 	position: absolute;
@@ -59,10 +66,121 @@ label {
 	left: 0;
 	bottom: 0;
 	right: 0;
+	overflow: scroll;
 }
+
+
+
+#facebook
+{
+	position: relative;
+	height: 70px;
+}
+	#facebookUser
+	{
+		text-align:center;
+	}
+	
+	#profileWidget
+	{
+		padding:5px;
+		padding-right:10px;
+		height: 40px;
+		background: white;
+		border: 1px solid #333;
+		margin-top: 10px;
+		width: 290px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+		#namebadge
+		{
+			position:absolute;
+			margin-left: 50px;
+			text-align:left;
+		}
+			#namebadge span
+			{
+				vertical-align:middle;
+				font-size:11px;				
+				line-height: 20px;
+				margin-top:5px;
+				height: 40px;
+				width: 100px;
+			}
+		#profilePic
+		{
+			float:left;
+			width: 50px;
+		}
+		#utilLinks
+		{
+			padding-top: 7px;
+			height: 50px;
+			vertical-align:middle;
+		}
+		#utilLinks a
+		{
+			font-size: 10px;
+		}
+		.floatright
+		{
+			float:right;
+		}
+
+
+
+
 #top {
 	float: left;
 	width: 100%;
+}
+.hidden
+{
+	display:none;
+}
+.formsection h2
+{
+	border-bottom:1px solid #333;
+}
+.productTitle
+{
+	padding-left: 5px;
+	line-height:40px;
+	float:left;
+}
+.cartOptions
+{
+	width: 100%;
+	margin-left: -40px;
+	margin: none !important;
+	text-indent:none;
+	list-style: none;
+}
+.product
+{
+	padding-top: 6px;
+	padding-right: 3px;
+	float:right;
+}
+.cartOptions li
+{
+	width: 100%;
+	margin: none;
+	text-indent:none;
+	height: 40px;
+	margin-bottom: 10px;
+	background: black;
+	border: 2px solid #111;
+	opacity: 0.7;
+	list-style:none;
+}
+.center
+{
+	width: 100%;
+	position:relative;
+	text-align:center;
 }
 #wrapper {
 	width: 300px;
@@ -70,7 +188,7 @@ label {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
-	margin: 15.5em auto 0 auto;
+	margin: 2.5em auto 0 auto;
 	opacity: 0.8;
 	padding: 0 15px;
 	background-color: #121212;
