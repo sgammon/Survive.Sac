@@ -38,7 +38,7 @@ class MainPage(webapp.RequestHandler):
 <html>
 	<head>
 		<title>Register to play Survive Sac 2011</title>
-		<link rel="stylesheet" type="text/css" href="http://west-us.cdn.static.labs.momentum.io/style/survive-sac-v2.css" />
+		<link rel="stylesheet" type="text/css" href="style/survive-sac-v1.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 	</head>
 	<body><div id='main'>""")
@@ -54,7 +54,7 @@ class MainPage(webapp.RequestHandler):
 				alert_type = 'success'
 				
 			self.response.write("""
-				<div id='alert' class='%s'><p>
+				<div id='alert' class='%s'><h2>
 			""" % alert_type)
 
 			if fail is not False:
@@ -67,7 +67,7 @@ class MainPage(webapp.RequestHandler):
 				self.response.write('Success! You have been registered.')
 	
 			self.response.write("""
-				</p></div>
+				</h2></div>
 			""")
 	
 		self.response.write("""<div id="wrapper">
@@ -82,10 +82,10 @@ class MainPage(webapp.RequestHandler):
 				<div><input type="text" name="full_name" placeholder="name" value='name'/></div>
 				<div><input type="text" name="email" placeholder="email" value='email' /></div>
 				<div><input type="text" name="age" placeholder="age" value='age' /></div>
-				<div><input type="checkbox" class="check" name="previous_game" id="previous_game"><label for="previous_game">did you play last year?</label></div>
-				<div><input type="checkbox" class="check" name="smartphone" id="smartphone"><label for="smartphone">do you have a smartphone?</label></div>
-				<div><input type="text" name="paypal" placeholder="paypal verification code"  value='paypal verification code'/></div>
 				<div><textarea name="refer" id="refer" rows="6" placeholder="how did you hear about Survive Sac?">how did you hear about Survive Sac?</textarea></div>
+				<div><input type="text" name="previous_game" placeholder="did you play last year?" value='did you play last year?' /></div>
+				<div><input type="text" name="smartphone" placeholder="do you have a smartphone?" value='do you have a smartphone?' /></div>
+				<div><input type="text" name="paypal" placeholder="paypal confirmation number"  value='paypal confirmation number'/></div>
 				<div><input type="submit" id="submit" value="create player"/></div>
 			</form>
 		</div></div>
@@ -112,22 +112,23 @@ class Team(webapp.RequestHandler):
 		player.email = self.request.get('email')
 		player.refer = self.request.get('refer')
 		
+		logging.info('REQUEST: ' + str(self.request))
 		previous_game = self.request.get('previous_game', False)
 		
-		if previous_game in ['1', 'on', 'yes', 'checked', True, 1]:
+		if previous_game in ['1', 'on', 'yes', 'checked', 'True', True, 1]:
 			player.previous_game = True
 		else:
 			player.previous_game = False
 		
 		smartphone = self.request.get('smartphone', False)
 
-		if smartphone in ['1', 'on', 'yes', 'checked', True, 1]:
+		if smartphone in ['1', 'on', 'yes', 'checked', 'True', True, 1]:
 			player.smartphone = True
 		else:
 			player.smartphone = False
 
 		paypal = self.request.get('paypal', False)
-		if paypal != 'paypal verification code' and paypal not in set([False, None, 0]):
+		if paypal != 'paypal confirmation number' and paypal not in [False, None, 0]:
 			player.paypal = self.request.get('paypal')
 		else:
 			self.redirect('/?' + urllib.urlencode({'fail': 'true', 'reason': 'paypal_invalid'}))

@@ -1,9 +1,10 @@
 body {
-	background-color: #000;
+	background: #000 url('http://west-us.cdn.static.labs.momentum.io/img/survivesac-bg-v1.png') no-repeat center center;
 	font-family: Verdana;
 	color: #828282;
 	font-size: 75%;
 }
+
 h1 {
 	color: #f00;
 	font-size: 150%; 
@@ -31,13 +32,16 @@ input:active, input:focus, textarea:active, textarea:focus {
 	border: #e1e1e1 solid 1px;
 	background-color: #616161;
 }
+input.small {
+	width: 140px;
+	display: inline;
+	margin-left: 10px;
+}
 label {
 	font-size: 1em;
 	display: inline;
 }
-.check {
-	width: 25px;
-}
+
 #submit {
 	color: #f00;
 	border: 1px solid red;
@@ -48,34 +52,39 @@ label {
 }
 #main
 {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
-	right: 0;
 	bottom: 0;
-	background: url('http://west-us.cdn.static.labs.momentum.io/img/survivesac-bg-v1.png') no-repeat center center;
+	right: 0;
+}
+#top {
+	float: left;
+	width: 100%;
 }
 #wrapper {
 	width: 300px;
-	margin: 15.5em auto;
-	opacity: 0.8;
-	padding: 0 15px;
-	background-color: #121212;
-	border: 1px #828282 solid;
-}
-#alert
-{
-	margin-top: 50px;
-	width: 450px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	padding: 2px;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
+	margin: 15.5em auto 0 auto;
+	opacity: 0.8;
+	padding: 0 15px;
+	background-color: #121212;
+	border: 1px #828282 solid;
+
 }
+#alert
+{
+	margin: 50px 0 0 0 ;
+	padding: 0;
+	width: 100%;
+	text-align: center;
+	float: left;
+
+}
+#alert h2 {margin: 5px; font: inherit}
 .success
 {
 	background: green;
