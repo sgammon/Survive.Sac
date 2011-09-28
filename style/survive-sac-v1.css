@@ -17,6 +17,7 @@ h1 {
 	background-color: #000;
 	align: center;
 }
+strong {font-weight: 120%;}
 form {text-align: left;}
 input, textarea {
 	font-family: Verdana;

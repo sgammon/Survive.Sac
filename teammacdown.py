@@ -137,14 +137,42 @@ class Team(webapp.RequestHandler):
 		k = player.put()
 		
 		if isinstance(k, db.Key):
-			self.redirect('/?' + urllib.urlencode({'success': 'true'}))
+			self.redirect('/success?' + urllib.urlencode({'full_name': str(player.full_name)}))
 		else:
 			self.redirect('/?' + urllib.urlencode({'fail': 'true', 'reason': 'unknown'}))
+			
+class Callback(webapp.RequestHandler):
+	
+	def get(self):
+		
+		full_name = self.request.get('full_name')
+		
+		self.response.write("""
+<html>
+	<head>
+		<title>You have been registered.</title>
+		<link rel="stylesheet" type="text/css" href="style/survive-sac-v1.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id='main'>
+			<div id="wrapper">
+				<h1>SUCCESS</h1>
+				<p>You have successfully registered player <strong>%s</strong> in Survive Sacramento 2011: Outbreak. Confirmation has been sent to the email address you gave us.</p>
+				<p>Future information about the game, including game specifics and previews of game surprises, will be sent via email, and on Facebook if you chose to connect.</p>
+				<p>Thanks for making this game a reality, and we'll see you at the briefing.</p>
+				<p style="margin-left: 50px">- &laquo;TMD&raquo
+			</div>
+		</div>
+	</body>
+</html>""" % str(full_name))
+		
 		
 
 TMD = webapp.WSGIApplication([
 	('/', MainPage),
-	('/create', Team)
+	('/create', Team),
+	('/success', Callback)
 	], debug=True)
 	
 	
