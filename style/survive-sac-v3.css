@@ -25,9 +25,15 @@ input, textarea {
 	font-family: Verdana;
 	color: #828282;
 	border: #828282 solid 1px;
-	background-color: #242424;
+	opacity: 1;
 	width: 300px;
 	margin-bottom: 5px;
+	background: black;
+	box-shadow: 3px 3px 3px black;	
+}
+hr
+{
+	border: 1px solid #080808;
 }
 p {font-size: inherit;}
 input:active, input:focus, textarea:active, textarea:focus {
@@ -50,13 +56,42 @@ label {
 	display: inline;
 }
 
-#submit {
+.submit {
+	width: 298px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
 	color: #f00;
 	border: 1px solid red;
 	text-transform: uppercase;
+	font-weight: bold;
 	background-color: #000;
 	letter-spacing:5px;
-	margin-bottom: 0;
+	margin-bottom: 0;	
+}
+
+.submit.disabled
+{
+	box-shadow: none;
+	opacity: 0.2;
+	border-color: #222;
+	background-color: #888;
+	color: #222;
+	font-weight: normal;
+}
+
+.submit.enabled:hover
+{
+	background: #828282;
+	color: white;
+	border: 1px solid white;
+}
+
+.submit.enabled:active
+{
+	box-shadow:none;
+	margin-top:3px;
+	margin-left:1px;
 }
 
 #main
@@ -69,10 +104,9 @@ label {
 	overflow: scroll;
 }
 
-
-
 #facebook
 {
+	margin-top:15px;
 	position: relative;
 	height: 70px;
 }
@@ -88,7 +122,7 @@ label {
 		height: 40px;
 		background: white;
 		border: 1px solid #333;
-		margin-top: 10px;
+		margin-top: 5px;
 		width: 290px;
 		margin-left: auto;
 		margin-right: auto;
@@ -140,20 +174,25 @@ label {
 {
 	display:none;
 }
+.formsection
+{
+	width: 300px;
+	padding: 15px;
+}
 .formsection h2
 {
 	border-bottom:1px solid #333;
 }
 .productTitle
 {
-	padding-left: 5px;
+	padding-left: 12px;
 	line-height:40px;
 	float:left;
 }
 .cartOptions
 {
 	width: 100%;
-	margin-left: -40px;
+	margin-left: -45px;
 	margin: none !important;
 	text-indent:none;
 	list-style: none;
@@ -183,17 +222,16 @@ label {
 	text-align:center;
 }
 #wrapper {
-	width: 300px;
+	width: 330px;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
 	margin: 2.5em auto 0 auto;
 	opacity: 0.8;
-	padding: 0 15px;
+	padding: 0;
 	background-color: #121212;
 	border: 1px #828282 solid;
-
 }
 #alert
 {
@@ -214,4 +252,107 @@ label {
 {
 	background: red;
 	color: black;
+}
+#regprogress
+{
+	opacity: 0.9;
+	height: 35px;
+	width: 354px;
+	left: -9px;
+	text-align: left;
+	position: relative;
+}
+#regWrapper
+{
+	position: relative;
+	width: 100%;
+	height: 35px;
+	text-align:left;
+}
+#regprogress .step
+{
+	margin-left: -5px;
+	box-shadow: 2px 0px 2px black;	
+	background: black;
+	color: #FFF;
+	display:inline-block;
+	height: 35px;
+	line-height: 35px;
+	width: 120px;
+	font-size:85%;
+	text-align:center;
+	overflow:hidden;
+}
+#regprogress .step span
+{
+	height: 35px;
+	line-height: 35px;
+}
+#regprogress .step.collapsed
+{
+	width: 0;
+}
+#regprogress .step.current, #regprogress .step.completed
+{
+	background: green;
+}
+
+.formstep
+{
+	float:left;
+	clear:none;
+}
+
+#registrationStep
+{
+	margin-right: 15px;
+}
+
+/* ICONS */
+.iconbox
+{
+	padding-left: 20px;	
+}
+.arrowbox
+{
+	background: transparent url(/img/icons/bullet_go.png) no-repeat center left;	
+}
+.checkbox
+{
+	background: transparent url(/img/icons/accept.png) no-repeat center left;
+}
+.errorbox
+{
+	background: transparent url(/img/icons/error.png) no-repeat center left;
+}
+.evilgrinbox
+{
+	background: transparent url(/img/icons/emoticon_evilgrin.png) no-repeat center left;
+}
+.exclamationbox
+{
+	background: transparent url(/img/icons/exclamation.png) no-repeat center left;	
+}
+.shoe
+{
+	width: 14px;
+	height: 14px;
+	opacity: 0.6;
+	position: absolute;
+}
+#leftshoe
+{
+	background: green;	
+	left: -6px;
+	-webkit-mask-image: url(/img/layout/corner_mask_left.png);
+}
+#rightshoe
+{
+	background: black;
+	right: 0;
+	-webkit-mask-image: url(/img/layout/corner_mask_right.png);	
+}
+#rightshoe.activated
+{
+	background: green !important;
 }

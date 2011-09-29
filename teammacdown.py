@@ -76,10 +76,11 @@ class MainPage(TMDHandler):
 	
 				
 		team_name = self.request.get('team_name')
+		self.render('registration.html', alert=alert, alert_type=alert_type, step=1)
 		
-		#players = db.GqlQuery("SELECT * FROM Player WHERE ANCESTOR IS :1 ORDER BY date DESC LIMIT 10", team_key(team_name))
-		
-		self.render('registration.html', alert=alert, alert_type=alert_type)
+	def post(self):
+		logging.info('POST RECEIVED AT LANDING: '+str(self.request))
+		self.get()
 		
 
 
