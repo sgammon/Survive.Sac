@@ -52,10 +52,10 @@
 	
 	<div id='regWrapper'>
 		<div id='step1' class='step{% if step == 1 %} current{% endif %}{% if step > 1 %} completed{% endif %}'>
-			{% if step == 1 %}<span class='iconbox arrowbox'>1: Register</span>{% else %}<span class='iconbox checkbox'>Register</span>{% endif %}
+			{% if step == 1 %}<span class='iconbox arrowbox'>Register</span>{% else %}<span class='iconbox checkbox'>Register</span>{% endif %}
 		</div>
 		<div id='step2' class='step{% if step == 2 %} current{% else %}{% if step > 2 %} completed{% else %} collapsed{% endif%}{% endif %}'>
-			{% if step == 2 %}<span class='iconbox arrowbox'>2: Donate</span>{% else %}{% if step == 3 %}<span class='iconbox checkbox'>Donate</span>{% else %}<span style='opacity: 0;'>Donate</span>{% endif %}{% endif %}
+			{% if step == 2 %}<span class='iconbox arrowbox'>Donate</span>{% else %}{% if step == 3 %}<span class='iconbox checkbox'>Donate</span>{% else %}<span style='opacity: 0;'>Donate</span>{% endif %}{% endif %}
 		</div>
 		{% if step > 2 %}
 		<div id='step3' class='step{% if step == 3 %} current{% endif %}'>
@@ -75,14 +75,11 @@
 	{% endif %}
 	
 </div>
-
 {% if step != 3 %}
 	<div id='regform'>
-
 		<div id='scroller'>
 			<div id='registrationStep' class='formstep'>
 				<div class='formsection'>
-
 					<div id='facebook' class='center'>
 						<div id='facebookUser' class='hidden'>
 							<div id='facebookAuthSuccess'>
@@ -108,22 +105,17 @@
 						<div id='facebookLogin'>
 							<br />
 							<fb:login-button perms="email,publish_checkins,publish_stream,publish_actions,sms,rsvp_event">Login with Facebook</fb:login-button>
-							<br />
-							<br />
-							-- or --
+							<h2>OR</h2>
 						</div>
 					</div>
-
-					<br />
-
+					<div id="regformwrap">
 					<form id='regFormAction' action="/create" method="post">
 						<div><input id='name' type="text" name="full_name" placeholder="name" value='name' data-required='true' required /></div>
 						<div><input id='email' type="email" name="email" placeholder="email" value='email' data-required='true' required /></div>
 						<div><input id='age' type="text" name="age" placeholder="age" value='age' data-required='true' /></div>
 						<div><textarea name="refer" id="refer" rows="6" placeholder="how did you hear about Survive Sac?">how did you hear about Survive Sac?</textarea></div>
-						<br />
 						<div>
-							did you attend the last survive sac?<br />
+							<p>did you attend the last survive sac?</p>
 							<span>
 								<select name='lastgame'>
 									<option value='no'>No</option>
@@ -131,7 +123,6 @@
 								</select>
 							</span>
 						</div>
-						<br />
 						<div>
 							do you own a smartphone?<br />
 							<select name='smartphone'>
@@ -144,8 +135,6 @@
 							</select>
 						</div>		
 
-						<br />
-
 						<!-- Hidden Properties -->
 						<input id='fb_profile_gender' type='hidden' value='__NULL__' />
 						<input id='fb_profile_username' type='hidden' value='__NULL__' />
@@ -155,6 +144,7 @@
 						<input id='registerSubmit' class='submit disabled' type='submit' value='Next ->' disabled />
 				
 					</form>
+					</div>
 				</div>
 			</div>
 	
@@ -196,6 +186,7 @@
 				</div>
 			</div>
 		</div>
+		<br /><br />
 	</div>
 {% else %}
 <div>
@@ -284,6 +275,18 @@
 		FB.init({ 
 		   appId:'242878385764668', cookie:true, 
 		   status:true, xfbml:true 
+		});
+		
+		FB.api('/me', function(user) {
+			console.log('/me', user);
+			if(user != null)
+			{
+				if(user.error == undefined)
+				{
+					fillFacebookResponse(user);					
+				}
+			}
+			
 		});
 		
 		$('#fb-login-button').click(function doLoginEvent()

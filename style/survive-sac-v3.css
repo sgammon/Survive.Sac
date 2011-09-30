@@ -17,7 +17,17 @@ h1 {
 	margin: 15px auto;
 	width: 300px;
 	background-color: #000;
-	align: center;
+}
+h2 {
+	color: #fff;
+	font-size: 125%;
+	font-weight: bold;
+	letter-spacing:4px;
+	line-height: 1.2em;
+	text-align: center;
+	margin: 15px auto;
+	width: 300px;
+	background-color: transparent;
 }
 strong {font-weight: 120%;}
 form {text-align: left;}
@@ -35,7 +45,8 @@ hr
 {
 	border: 1px solid #080808;
 }
-p {font-size: inherit;}
+p {font-size: 90%; margin:15px;}
+p.indent {margin-left: 40px;}
 input:active, input:focus, textarea:active, textarea:focus {
 	font: Verdana;
 	color: ;#cacaca;
@@ -106,7 +117,7 @@ label {
 
 #facebook
 {
-	margin-top:15px;
+	margin: 0;
 	position: relative;
 	height: 70px;
 }
@@ -123,7 +134,7 @@ label {
 		background: white;
 		border: 1px solid #333;
 		margin-top: 5px;
-		width: 290px;
+		width: 282px;
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -163,9 +174,6 @@ label {
 			float:right;
 		}
 
-
-
-
 #top {
 	float: left;
 	width: 100%;
@@ -177,11 +185,7 @@ label {
 .formsection
 {
 	width: 300px;
-	padding: 15px;
-}
-.formsection h2
-{
-	border-bottom:1px solid #333;
+	padding: 5px 15px 15px 15px;
 }
 .productTitle
 {
@@ -252,6 +256,9 @@ label {
 {
 	background: red;
 	color: black;
+}
+#regformwrap {
+	margin: 15px 0 0 0;
 }
 #regprogress
 {

@@ -126,6 +126,12 @@ class Callback(TMDHandler):
 		full_name = self.request.get('full_name')
 		self.render('confirmation.html', fullname=full_name)
 		
+class Info(TMDHandler):
+	
+	def get(self):
+		
+		self.render('info.html')
+		
 		
 class FBPageTab(TMDHandler):
 	
@@ -143,6 +149,7 @@ TMD = webapp.WSGIApplication([
 	('/', MainPage),
 	('/create', Team),
 	('/success', Callback),
+	('/info', Info),
 	('/_fb/pagetab', MainPage),
 	('/_fb/app.*', MainPage)
 	], debug=True, config=config.config)
