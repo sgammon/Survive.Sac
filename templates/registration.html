@@ -1,6 +1,6 @@
 {% extends "__base.html" %}
 
-{% block title %}Register to play Survive Sac 2011{% endblock %}
+{% block title %}SurviveSacramento - Live action halloween zombie tag in Downtown Sacramento, SECOND YEAR RUNNING - HALLOWEEN 2011{% endblock %}
 
 {% block heading %}REGISTRATION{% endblock %}
 
@@ -364,8 +364,8 @@
 	}
 		
 </script>
-<script  id='googlecart-script' type='text/javascript' src='https://checkout.google.com/seller/gsc/v2_2/cart.js?mid=819057174593550'
-	post-cart-to-sandbox='true'
+<script  id='googlecart-script' type='text/javascript' src='https://checkout.google.com/seller/gsc/v2_2/cart.js?mid={{ checkout_mid }}'
+	post-cart-to-sandbox='{{ sandbox }}'
 	currency='USD'
 	productWeightUnits='LB'
 	hide-cart-when-empty="false"

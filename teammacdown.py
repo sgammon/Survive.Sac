@@ -12,6 +12,7 @@ import webapp2 as webapp
 from webapp2_extras import jinja2
 
 from google.appengine.ext import db
+from google.appengine.api import users
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 
@@ -41,9 +42,20 @@ class TMDHandler(webapp.RequestHandler):
 		
 	def render(self, template, context={}, **kwargs):
 		
+		baseContext = {
+		
+			'user': {
+				'is_admin': users.is_current_user_admin()
+			}
+		
+		}
+		
 		if len(kwargs) > 0:
 			for k, v in kwargs.items():
 				context[k] = v
+				
+		for k, v in baseContext.items():
+			context[k] = v
 		
 		self.response.write(self.jinja2.render_template(template, **context))
 
@@ -76,7 +88,15 @@ class MainPage(TMDHandler):
 	
 				
 		team_name = self.request.get('team_name')
-		self.render('registration.html', alert=alert, alert_type=alert_type, step=1)
+		checkout_cfg = config.config.get('google.checkout')
+		if checkout_cfg['sandbox'] == True:
+			sandbox = 'true'
+			mid = checkout_cfg['sandbox_mid']
+		else:
+			sandbox = 'false'
+			mid = checkout_cfg['mid']
+		
+		self.render('registration.html', alert=alert, alert_type=alert_type, step=1, sandbox=sandbox, checkout_mid=mid)
 		
 	def post(self):
 		logging.info('POST RECEIVED AT LANDING: '+str(self.request))

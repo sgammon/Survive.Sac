@@ -41,3 +41,13 @@ config['webapp2_extras.jinja2'] = {
 	},
 
 }
+
+
+## SITE CONFIG ##
+config['google.checkout'] = {
+
+	'mid': '819057174593550',
+	'sandbox': True,
+	'sandbox_mid': '720119283319381'
+
+}
