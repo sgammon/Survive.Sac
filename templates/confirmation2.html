@@ -1,0 +1,83 @@
+{% extends "__base.html" %}
+
+{% block title %}Confirming your Survive Sacramento ticket order...{% endblock %}
+
+{% block heading %}CONFIRMATION{% endblock %}
+
+{% block headerscript %}
+<link rel="stylesheet" href="{{ cdn }}/style/survive-sac-animations-v1.css" />
+<script type="text/javascript" src="/_ah/channel/jsapi"></script>
+{% endblock %}
+
+{% block content %}
+
+<div id='regprogress'>
+	
+	<div id='regWrapper'>
+		<div id='step1' class='step completed'>
+			<span class='iconbox checkbox'>Register</span>
+		</div>
+		<div id='step2' class='step completed'>
+			<span class='iconbox checkbox'>Donate</span>
+		</div>
+
+		<div id='step3' class='step current'>
+			<span id='confirm_status' class='iconbox arrowbox'>Confirming...</span>
+		</div>
+	
+		<div class='clearboth'></div>
+			
+	</div>
+	
+	<div class='clearboth'></div>
+	
+	<div id='leftshoe' class='floatleft shoe'></div>	
+	<div id='rightshoe' class='floatright shoe activated'></div>
+	
+</div>
+
+<div class="container">
+	<ul id="progress">
+	    <li><div id="layer1" class="ball"></div><div id="layer7" class="pulse"></div></li>
+	    <li><div id="layer2" class="ball"></div><div id="layer8" class="pulse"></div></li>
+	    <li><div id="layer3" class="ball"></div><div id="layer9" class="pulse"></div></li>
+	    <li><div id="layer4" class="ball"></div><div id="layer10" class="pulse"></div></li>
+	    <li><div id="layer5" class="ball"></div><div id="layer11" class="pulse"></div></li>
+    </ul>
+</div>
+
+<script type='text/javascript'>
+	channel = new goog.appengine.Channel('{{ livetoken }}');
+    socket = channel.open();
+    socket.onopen = function socketOpen() {console.log('Socket Opened');};
+    socket.onmessage = function receiveCallback(message)
+	{
+		console.log('SocketMessage', message);
+		console.log('SocketJSON', JSON.parse(message.data));
+		$('#progress').animate({opacity: 0}).addClass('hidden');
+		$('#pleasewait').animate({opacity: 0}).addClass('hidden');
+		$('#confirmationPane').animate({opacity: 1}).removeClass('hidden');
+		$('#confirm_status').text('Done!');
+	};
+    socket.onerror = function socketError(error) {console.log('Socket Error', error);};
+    socket.onclose = function socketClosed() {console.log('Socket Closed');};
+</script>
+
+
+<div id='pleasewait'>
+	
+	<h5 class='textcenter'>Please wait while we confirm your order...<br /><br />
+			<b>Alternatively, you can now leave this page</b><br />. Either way, we'll send you a confirmation email with your details.</h5>
+	
+</div>
+
+<div id='confirmationPane' class='hidden' style='opacity: 0;'>
+	<b>Thanks!</b>
+	<br />
+	<p>You have successfully registered player <strong>{{ fullname }}</strong> in Survive Sacramento 2011: Outbreak. Confirmation has been sent to the email address you gave us.</p>
+	<p><b>You may now leave this page.</b> Alternatively, you can stick around for your ticket to be claimed.</p>
+	<p>Future information about the game, including game specifics and previews of game surprises, will be sent via email, and on Facebook if you chose to connect.</p>
+	<p>Thanks for making this game a reality, and we'll see you at the briefing.</p>
+	<p style="margin-left: 50px">- &laquo;TMD&raquo
+</div>
+{% endblock %}

@@ -1,73 +1,203 @@
-body {
-	background: #000 url('http://west-us.cdn.static.labs.momentum.io/img/survivesac-bg-v1.png') no-repeat center center;
-	font-family: Verdana;
-	color: #828282;
-	font-size: 75%;
-}
+@charset 'utf-8'
 
-a:visited {color: blue}
+/* Semantic Styles
+/* --------------------------------------------------------------- */
 
-h1 {
-	color: #f00;
-	font-size: 150%; 
-	font-weight: bold; 
-	letter-spacing: 5px;
-	line-height: 1.5em;
-	text-align: center;
-	margin: 15px auto;
-	width: 300px;
-	background-color: #000;
-}
-h2 {
-	color: #fff;
-	font-size: 125%;
-	font-weight: bold;
-	letter-spacing:4px;
-	line-height: 1.2em;
-	text-align: center;
-	margin: 15px auto;
-	width: 300px;
-	background-color: transparent;
-}
-strong {font-weight: 120%;}
-form {text-align: left;}
-input, textarea {
-	font-family: Verdana;
-	color: #828282;
-	border: #828282 solid 1px;
-	opacity: 1;
-	width: 300px;
-	margin-bottom: 5px;
-	background: black;
-	box-shadow: 3px 3px 3px black;	
-}
-hr
+.center
 {
-	border: 1px solid #080808;
+	width: 100%;
+	position:relative;
+	text-align:center;
 }
-p {font-size: 90%; margin:15px;}
-p.indent {margin-left: 40px;}
-input:active, input:focus, textarea:active, textarea:focus {
-	font: Verdana;
-	color: ;#cacaca;
-	border: #e1e1e1 solid 1px;
-	background-color: #616161;
+
+.floatright
+{
+	float:right;
 }
+
+.floatleft
+{
+	float: left;
+}
+
+.hidden
+{
+	display:none;
+}
+
 .smalltext
 {
 	font-size:11px;
 }
-input.small {
-	width: 140px;
-	display: inline;
-	margin-left: 10px;
+
+.textcenter
+{
+	text-align:center;
+	width: 100%;
 }
-label {
+
+.clearboth
+{
+	clear:both;
+}
+
+.disabled
+{
+	text-underline: none;
+}
+
+
+/* Main Styles
+/* --------------------------------------------------------------- */
+
+body {
+	color: #828282;
+	font-size: 75%;
+	font-family: Verdana, sans-serif;	
+}
+
+a, a:visited
+{
+	color: white;
+}
+
+a:active, a:hover
+{
+	text-decoration: underline;
+}
+
+h1, h2
+{
+	font-weight: bold;
+	text-align: center;
+	margin: 15px auto;
+	width: 300px;
+}
+
+h1 {
+	color: #f00;
+	font-size: 150%;
+	letter-spacing: 5px;
+	line-height: 1.5em;
+	background-color: #000;
+}
+
+h2 {
+	color: #fff;
+	font-size: 125%;
+	letter-spacing:4px;
+	line-height: 1.2em;
+	background-color: transparent;
+}
+
+b, strong
+{
+	font-weight: 120%;
+}
+
+hr
+{
+	border: 1px solid #080808;
+}
+
+p
+{
+	font-size: 90%;
+}
+
+p.indent
+{
+	margin-left: 40px;
+}
+
+
+/* Layout Styles
+/* --------------------------------------------------------------- */
+
+#main
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	overflow: scroll;
+	background: #000 url('/img/survivesac-bg-v1.png') no-repeat center center;		
+}
+
+#wrapper
+{
+	width: 330px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	margin: 2.5em auto 0 auto;
+	opacity: 0.8;
+	padding: 0;
+	background-color: #121212;
+	border: 1px #828282 solid;
+	height: 580px;
+}
+
+.formsection
+{
+	width: 300px;
+	padding: 5px 15px 15px 15px;
+}
+
+
+/* Form/Input Styles
+/* --------------------------------------------------------------- */
+
+form
+{
+	text-align: left;
+	text-indent: none;
+}
+
+/* Inputs & Labels */
+label
+{
 	font-size: 1em;
 	display: inline;
 }
 
-.submit {
+input.small
+{
+	width: 140px;
+	display: inline;
+	margin-left: 10px;
+}
+
+input, textarea
+{
+	box-shadow: 2px 2px 3px black;
+}
+
+input, textarea
+{
+	font-family: Verdana, sans-serif;
+	color: #828282;
+	border: #828282 solid 1px;
+	width: 300px;
+	margin-bottom: 5px;
+	opacity: 1;	
+	background: black;
+	box-shadow: 3px 3px 3px black;	
+}
+
+input:active, input:focus, textarea:active, textarea:focus
+{
+	font: Verdana;
+	color: #000;
+	border: #e1e1e1 solid 1px;
+	background-color: #616161;
+}
+
+/* Submit Button */
+.submit
+{
 	width: 298px;
 	margin-left: auto;
 	margin-right: auto;
@@ -105,15 +235,9 @@ label {
 	margin-left:1px;
 }
 
-#main
-{
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	overflow: scroll;
-}
+
+/* Facebook Widget Styles
+/* --------------------------------------------------------------- */
 
 #facebook
 {
@@ -121,72 +245,73 @@ label {
 	position: relative;
 	margin-top:20px;
 	height: 85px;
+	text-align:center;
 }
-	#facebookUser
-	{
-		text-align:center;
-	}
-	
-	#profileWidget
-	{
-		padding:5px;
-		padding-right:10px;
-		height: 40px;
-		background: white;
-		border: 1px solid #333;
-		margin-top: 5px;
-		width: 282px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	
-		#namebadge
-		{
-			position:absolute;
-			margin-left: 50px;
-			text-align:left;
-		}
-			#namebadge span
-			{
-				vertical-align:middle;
-				font-size:11px;				
-				line-height: 20px;
-				margin-top:5px;
-				height: 40px;
-				width: 100px;
-			}
-		#profilePic
-		{
-			float:left;
-			width: 50px;
-		}
-		#utilLinks
-		{
-			padding-top: 7px;
-			height: 50px;
-			vertical-align:middle;
-		}
-		#utilLinks a
-		{
-			font-size: 10px;
-		}
-		.floatright
-		{
-			float:right;
-		}
 
-#top {
-	float: left;
-	width: 100%;
-}
-.hidden
+#facebookLoginButton
 {
-	display:none;
+	width: 75%;
 }
-.formsection
+
+#profileWidget
 {
-	width: 300px;
-	padding: 5px 15px 15px 15px;
+	padding:5px;
+	padding-right:10px;
+	height: 40px;
+	background: white;
+	border: 1px solid #333;
+	margin-top: 5px;
+	width: 282px;
+	margin-left: auto;
+	margin-right: auto;
+}
+	
+#namebadge
+{
+	position:absolute;
+	margin-left: 50px;
+	text-align:left;
+}
+
+#namebadge span
+{
+	vertical-align:middle;
+	font-size:11px;				
+	line-height: 20px;
+	margin-top:5px;
+	height: 40px;
+	width: 100px;
+}
+
+#profilePic
+{
+	float:left;
+	width: 50px;
+}
+
+#utilLinks
+{
+	padding-top: 7px;
+	height: 50px;
+	vertical-align:middle;
+}
+
+#utilLinks a
+{
+	font-size: 10px;
+}
+
+
+/* Checkout Cart Styles
+/* --------------------------------------------------------------- */
+
+.product
+{
+	padding-top: 6px;
+	padding-right: 10px;
+	height: 40px;
+	line-height: 30px;
+	float:right;
 }
 .productTitle
 {
@@ -202,12 +327,6 @@ label {
 	text-indent:none;
 	list-style: none;
 }
-.product
-{
-	padding-top: 6px;
-	padding-right: 3px;
-	float:right;
-}
 .cartOptions li
 {
 	width: 100%;
@@ -220,47 +339,65 @@ label {
 	opacity: 0.7;
 	list-style:none;
 }
-.center
+.cartSubtotal
 {
-	width: 100%;
-	position:relative;
-	text-align:center;
+	padding: 5px;
 }
-#wrapper {
-	width: 330px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-o-border-radius: 5px;
-	margin: 2.5em auto 0 auto;
-	opacity: 0.8;
-	padding: 0;
-	background-color: #121212;
-	border: 1px #828282 solid;
+.cartSubtotal h2
+{
+	font-size:20pt;
+	letter-spacing: normal !important;
 }
+#subtotal_heading
+{
+	margin-right: 10px;
+	font-size: 10pt !important;
+}
+.addToCart
+{
+	cursor: pointer;
+}
+
+
+/* Alertbox Styles
+/* --------------------------------------------------------------- */
+
 #alert
 {
-	margin: 50px 0 0 0 ;
+	margin: 50px 0 0 0;
 	padding: 0;
 	width: 100%;
 	text-align: center;
 	float: left;
 
 }
-#alert h2 {margin: 5px; font: inherit}
-.success
+
+#alert h2
 {
-	background: green;
-	color: white;
+	margin: 5px;
+	font: inherit;
 }
+
 .fail
 {
 	background: red;
 	color: black;
 }
+
+.success
+{
+	background: green;
+	color: white;
+}
+
+
+/* Registration Form Styles
+/* --------------------------------------------------------------- */
+
 #regformwrap {
 	margin: 15px 0 0 0;
 }
+
 #regprogress
 {
 	opacity: 0.9;
@@ -270,6 +407,7 @@ label {
 	text-align: left;
 	position: relative;
 }
+
 #regWrapper
 {
 	position: relative;
@@ -277,6 +415,7 @@ label {
 	height: 35px;
 	text-align:left;
 }
+
 #regprogress .step
 {
 	margin-left: -5px;
@@ -286,24 +425,31 @@ label {
 	display:inline-block;
 	height: 35px;
 	line-height: 35px;
-	width: 120px;
-	font-size:85%;
+	width: 121px;
+	font-size:96%;
 	text-align:center;
 	overflow:hidden;
 }
+
 #regprogress .step span
 {
 	height: 35px;
 	line-height: 35px;
 }
+
 #regprogress .step.collapsed
 {
 	width: 0;
 }
+
 #regprogress .step.current, #regprogress .step.completed
 {
 	background: green;
 }
+
+
+/* Formstep Styles
+/* --------------------------------------------------------------- */
 
 .formstep
 {
@@ -316,31 +462,44 @@ label {
 	margin-right: 15px;
 }
 
-/* ICONS */
+
+/* Icon Styles
+/* --------------------------------------------------------------- */
+
 .iconbox
 {
 	padding-left: 20px;	
 }
+
 .arrowbox
 {
 	background: transparent url(/img/icons/bullet_go.png) no-repeat center left;	
 }
+
 .checkbox
 {
 	background: transparent url(/img/icons/accept.png) no-repeat center left;
 }
+
 .errorbox
 {
 	background: transparent url(/img/icons/error.png) no-repeat center left;
 }
+
 .evilgrinbox
 {
 	background: transparent url(/img/icons/emoticon_evilgrin.png) no-repeat center left;
 }
+
 .exclamationbox
 {
 	background: transparent url(/img/icons/exclamation.png) no-repeat center left;	
 }
+
+
+/* Show Styles
+/* --------------------------------------------------------------- */
+
 .shoe
 {
 	width: 14px;
@@ -348,19 +507,30 @@ label {
 	opacity: 0.6;
 	position: absolute;
 }
+
 #leftshoe
 {
 	background: green;	
 	left: -6px;
 	-webkit-mask-image: url(/img/layout/corner_mask_left.png);
 }
+
 #rightshoe
 {
 	background: black;
 	right: 0;
 	-webkit-mask-image: url(/img/layout/corner_mask_right.png);	
 }
+
 #rightshoe.activated
 {
 	background: green !important;
+}
+
+
+/* Confirmation Styles
+/* --------------------------------------------------------------- */
+#confirmationPane
+{
+	padding: 15px;
 }

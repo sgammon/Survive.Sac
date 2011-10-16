@@ -47,7 +47,9 @@ config['webapp2_extras.jinja2'] = {
 config['google.checkout'] = {
 
 	'mid': '819057174593550',
-	'sandbox': True,
-	'sandbox_mid': '720119283319381'
+	'mkey': 'GgYn-iuIrXO5w0Do9nggdg',
+	'sandbox': False,
+	'sandbox_mid': '720119283319381',
+	'sandbox_mkey': 'UDNa8lG42dJ5g8YCaDojTg',
 
 }
