@@ -76,6 +76,8 @@
 				{% block content %}{% endblock %}
 				
 			</div>
+			
+			<div id="infoFooter"><a href="/info" target="_blank">what's all this?</a></div>
 		
 		</div>
 		
@@ -85,6 +87,18 @@
 			  var _gaq = _gaq || [];
 			  _gaq.push(['_setAccount', 'UA-25133943-4']);
 			  _gaq.push(['_setDomainName', '.survivesacramento.com']);
+			{% if source %}
+			  _gaq.push(['_setCustomVar', 1, 'source', '{{ source }}', 1]);
+			{% endif %}
+			{% if medium %}
+			  _gaq.push(['_setCustomVar', 2, 'medium', '{{ medium }}', 1]);
+			{% endif %}
+			{% if location %}
+			  _gaq.push(['_setCustomVar', 3, 'location', '{{ location }}', 1]);
+			{% endif %}
+			{% if group %}
+			  _gaq.push(['_setCustomVar', 4, 'group', '{{ group }}', 1]);
+			{% endif %}
 			  _gaq.push(['_trackPageview']);
 
 			  (function() {

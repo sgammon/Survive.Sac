@@ -1,4 +1,4 @@
-''' TMD - Survive Sac '''
+''' TMD - SURVIVE SAC '''
 
 import os
 import cgi
@@ -54,12 +54,20 @@ class Player(db.Model):
 	fb_username = db.StringProperty()
 	paid = db.BooleanProperty(default=False)
 	checkout_order_id = db.StringProperty()
-
+	
 	## Merchandising !!
 	ordered_map = db.BooleanProperty(default=False)
 	ordered_rations = db.BooleanProperty(default=False)
+
+
+class AdHit(db.Model):
 	
-	
+	source = db.StringProperty()
+	medium = db.StringProperty()
+	location = db.StringProperty()
+	group = db.StringProperty()
+
+
 class CheckoutOrder(db.Model):
 	
 	order_id = db.StringProperty()
@@ -152,8 +160,26 @@ class MainPage(TMDHandler):
 					alert = 'The PayPal verification you provided was invalid. Please try again.'
 			elif success is not False:
 				alert = 'Success! You have been registered.'
-	
-				
+		
+		
+		# Hit tracker for guerilla marketing campaign	
+		s = self.request.get('cm_source', False)
+		m = self.request.get('cm_medium', False)
+		l = self.request.get('cm_location', False)
+		g = self.request.get('cm_group', False)
+		
+		if any([s, m, l, g]):
+			
+			h = AdHit()
+			h.source = s
+			h.medium = m
+			h.location = l
+			h.group = g
+			
+			h_key = h.put()
+			
+			logging.info('NEW HIT: '+str(h_key))
+		
 		team_name = self.request.get('team_name')
 		checkout_cfg = config.config.get('google.checkout')
 		if checkout_cfg['sandbox'] == True:
@@ -166,7 +192,7 @@ class MainPage(TMDHandler):
 		session_id = urllib.quote(str(base64.b64encode(self.session['sid'])))
 		session_token = self.session['token']
 		session_csrf = hashlib.sha512(self.session['sid']+self.session['token']).hexdigest()
-		self.render('registration.html', alert=alert, alert_type=alert_type, step=1, sandbox=sandbox, checkout_mid=mid, sid=session_id, token=session_token, csrf=session_csrf, environ=os.environ)
+		self.render('registration.html', alert=alert, alert_type=alert_type, step=1, sandbox=sandbox, checkout_mid=mid, sid=session_id, token=session_token, csrf=session_csrf, environ=os.environ, source=s, medium=m, location=l, group=g)
 		
 	def post(self):
 		logging.info('POST RECEIVED AT LANDING: '+str(self.request))
